@@ -1,0 +1,20 @@
+{
+  "name": "netw1fi-survey",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:generate": "drizzle-kit generate --name",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@netlify/database": "^2.0.0",
+    "drizzle-orm": "beta"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^3.0.0",
+    "@types/node": "^22.0.0",
+    "drizzle-kit": "beta",
+    "typescript": "^5.5.0"
+  }
+}

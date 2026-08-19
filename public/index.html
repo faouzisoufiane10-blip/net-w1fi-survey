@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NETW1FI — The People's Internet Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="grain"></div>
+
+<nav class="nav">
+  <div class="nav__brand">
+    <span class="nav__mark">◢◣</span>
+    <span class="nav__name">NETW1FI</span>
+  </div>
+  <div class="nav__links">
+    <a href="#survey" class="nav__link">Take Survey</a>
+    <a href="#dashboard" class="nav__link">Live Data</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero__meta">
+    <span class="hero__tag">VOL. 01 · 2026 EDITION</span>
+    <span class="hero__pulse"><i></i> COLLECTING RESPONSES</span>
+  </div>
+  <h1 class="hero__title">
+    How fast is <em>your</em><br />
+    internet,<br />
+    <span class="hero__accent">really?</span>
+  </h1>
+  <p class="hero__lede">
+    A crowdsourced audit of home broadband. No ISPs. No marketing. Just the raw,
+    unfiltered experience of people who pay for the connection they were promised.
+    Contribute your signal. See the truth.
+  </p>
+  <div class="hero__cta">
+    <a href="#survey" class="btn btn--primary">Report your connection</a>
+    <a href="#dashboard" class="btn btn--ghost">View live data</a>
+  </div>
+  <div class="hero__stats" id="heroStats">
+    <div class="stat"><span class="stat__num" id="statTotal">—</span><span class="stat__label">Responses</span></div>
+    <div class="stat"><span class="stat__num" id="statRecommend">—</span><span class="stat__label">Recommend their ISP</span></div>
+    <div class="stat"><span class="stat__num" id="statAvgReliability">—</span><span class="stat__label">Avg reliability /5</span></div>
+  </div>
+</header>
+
+<main>
+
+<section id="survey" class="survey">
+  <div class="section__head">
+    <span class="section__num">01</span>
+    <h2 class="section__title">The Survey</h2>
+    <p class="section__sub">Sixty seconds. Anonymous if you want. Honest always.</p>
+  </div>
+
+  <form id="surveyForm" class="form" novalidate>
+    <div class="form__group">
+      <label class="field">
+        <span class="field__label">Your name <i>(or a handle)</i></span>
+        <input type="text" name="respondentName" required placeholder="e.g. Mira Okafor" />
+      </label>
+      <label class="field">
+        <span class="field__label">Email <i>(optional, for results)</i></span>
+        <input type="email" name="email" placeholder="you@somewhere.net" />
+      </label>
+    </div>
+
+    <div class="form__group">
+      <label class="field">
+        <span class="field__label">City / Region</span>
+        <input type="text" name="location" required placeholder="e.g. Lagos, NG" />
+      </label>
+      <label class="field">
+        <span class="field__label">Your ISP</span>
+        <input type="text" name="isp" required placeholder="e.g. SpectraNet" />
+      </label>
+    </div>
+
+    <div class="form__group form__group--three">
+      <label class="field">
+        <span class="field__label">Download speed <i>(Mbps)</i></span>
+        <input type="number" step="0.1" name="downloadSpeed" placeholder="42.7" />
+      </label>
+      <label class="field">
+        <span class="field__label">Upload speed <i>(Mbps)</i></span>
+        <input type="number" step="0.1" name="uploadSpeed" placeholder="11.3" />
+      </label>
+      <label class="field">
+        <span class="field__label">Monthly cost <i>(local currency)</i></span>
+        <input type="number" step="0.01" name="monthlyCost" placeholder="38.74" />
+      </label>
+    </div>
+
+    <fieldset class="field field--select">
+      <span class="field__label">Connection type</span>
+      <div class="chips" data-name="connectionType">
+        <button type="button" class="chip" data-value="fiber">Fiber</button>
+        <button type="button" class="chip" data-value="cable">Cable</button>
+        <button type="button" class="chip" data-value="dsl">DSL</button>
+        <button type="button" class="chip" data-value="fixed-wireless">Fixed Wireless</button>
+        <button type="button" class="chip" data-value="mobile">Mobile 4G/5G</button>
+        <button type="button" class="chip" data-value="satellite">Satellite</button>
+        <button type="button" class="chip" data-value="other">Other</button>
+      </div>
+      <input type="hidden" name="connectionType" required />
+    </fieldset>
+
+    <fieldset class="ratings">
+      <legend class="field__label">Rate your service <i>(1 = awful, 5 = excellent)</i></legend>
+      <div class="ratings__grid">
+        <div class="rating" data-name="reliabilityRating">
+          <span class="rating__label">Reliability</span>
+          <div class="rating__stars" role="radiogroup" aria-label="Reliability rating">
+            <button type="button" class="star" data-val="1" aria-label="1"></button>
+            <button type="button" class="star" data-val="2" aria-label="2"></button>
+            <button type="button" class="star" data-val="3" aria-label="3"></button>
+            <button type="button" class="star" data-val="4" aria-label="4"></button>
+            <button type="button" class="star" data-val="5" aria-label="5"></button>
+          </div>
+          <input type="hidden" name="reliabilityRating" required />
+        </div>
+        <div class="rating" data-name="speedRating">
+          <span class="rating__label">Speed</span>
+          <div class="rating__stars" role="radiogroup" aria-label="Speed rating">
+            <button type="button" class="star" data-val="1" aria-label="1"></button>
+            <button type="button" class="star" data-val="2" aria-label="2"></button>
+            <button type="button" class="star" data-val="3" aria-label="3"></button>
+            <button type="button" class="star" data-val="4" aria-label="4"></button>
+            <button type="button" class="star" data-val="5" aria-label="5"></button>
+          </div>
+          <input type="hidden" name="speedRating" required />
+        </div>
+        <div class="rating" data-name="valueRating">
+          <span class="rating__label">Value for money</span>
+          <div class="rating__stars" role="radiogroup" aria-label="Value rating">
+            <button type="button" class="star" data-val="1" aria-label="1"></button>
+            <button type="button" class="star" data-val="2" aria-label="2"></button>
+            <button type="button" class="star" data-val="3" aria-label="3"></button>
+            <button type="button" class="star" data-val="4" aria-label="4"></button>
+            <button type="button" class="star" data-val="5" aria-label="5"></button>
+          </div>
+          <input type="hidden" name="valueRating" required />
+        </div>
+        <div class="rating" data-name="supportRating">
+          <span class="rating__label">Customer support</span>
+          <div class="rating__stars" role="radiogroup" aria-label="Support rating">
+            <button type="button" class="star" data-val="1" aria-label="1"></button>
+            <button type="button" class="star" data-val="2" aria-label="2"></button>
+            <button type="button" class="star" data-val="3" aria-label="3"></button>
+            <button type="button" class="star" data-val="4" aria-label="4"></button>
+            <button type="button" class="star" data-val="5" aria-label="5"></button>
+          </div>
+          <input type="hidden" name="supportRating" required />
+        </div>
+      </div>
+    </fieldset>
+
+    <label class="field">
+      <span class="field__label">Primary use</span>
+      <select name="primaryUse">
+        <option value="">Select…</option>
+        <option value="remote-work">Remote work / video calls</option>
+        <option value="streaming">Streaming / entertainment</option>
+        <option value="gaming">Gaming</option>
+        <option value="general">General browsing</option>
+        <option value="household">Household (mixed)</option>
+        <option value="business">Business / commercial</option>
+      </select>
+    </label>
+
+    <label class="toggle">
+      <input type="checkbox" name="wouldRecommend" />
+      <span class="toggle__track"><span class="toggle__thumb"></span></span>
+      <span class="toggle__text">I would recommend this ISP to a friend</span>
+    </label>
+
+    <label class="field">
+      <span class="field__label">Biggest pain points <i>(optional)</i></span>
+      <textarea name="painPoints" rows="3" placeholder="Drops out during calls. Throttled after 50GB. Raised ticket 4 times…"></textarea>
+    </label>
+
+    <label class="field">
+      <span class="field__label">What would make it better? <i>(optional)</i></span>
+      <textarea name="suggestions" rows="3" placeholder="Honest pricing. Real uptime. A human who picks up the phone."></textarea>
+    </label>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary" id="submitBtn">Submit response</button>
+      <span class="form__status" id="formStatus" role="status" aria-live="polite"></span>
+    </div>
+  </form>
+</section>
+
+<section id="dashboard" class="dashboard">
+  <div class="section__head">
+    <span class="section__num">02</span>
+    <h2 class="section__title">Live Data</h2>
+    <p class="section__sub">Aggregated from everyone who contributed. Updates in real time.</p>
+  </div>
+
+  <div class="dashboard__empty" id="dashEmpty" hidden>
+    <p>No responses yet. Be the first to add your signal.</p>
+  </div>
+
+  <div class="dashboard__body" id="dashBody">
+    <div class="metrics">
+      <div class="metric">
+        <span class="metric__label">Total responses</span>
+        <span class="metric__value" id="mTotal">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Would recommend</span>
+        <span class="metric__value" id="mRecommend">—</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Avg download</span>
+        <span class="metric__value" id="mDownload">—<small>Mbps</small></span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Avg upload</span>
+        <span class="metric__value" id="mUpload">—<small>Mbps</small></span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">Avg monthly cost</span>
+        <span class="metric__value" id="mCost">—</span>
+      </div>
+    </div>
+
+    <div class="bars">
+      <h3 class="bars__title">Average ratings</h3>
+      <div class="bar" data-target="reliability">
+        <span class="bar__label">Reliability</span>
+        <div class="bar__track"><div class="bar__fill"></div></div>
+        <span class="bar__val">—</span>
+      </div>
+      <div class="bar" data-target="speed">
+        <span class="bar__label">Speed</span>
+        <div class="bar__track"><div class="bar__fill"></div></div>
+        <span class="bar__val">—</span>
+      </div>
+      <div class="bar" data-target="value">
+        <span class="bar__label">Value</span>
+        <div class="bar__track"><div class="bar__fill"></div></div>
+        <span class="bar__val">—</span>
+      </div>
+      <div class="bar" data-target="support">
+        <span class="bar__label">Support</span>
+        <div class="bar__track"><div class="bar__fill"></div></div>
+        <span class="bar__val">—</span>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <h3 class="bars__title">By ISP</h3>
+      <table class="table" id="ispTable">
+        <thead>
+          <tr>
+            <th>ISP</th><th>Responses</th><th>Reliability</th><th>Speed</th><th>Value</th><th>Avg Mbps</th><th>Recommend %</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__row">
+    <span class="footer__brand">NETW1FI</span>
+    <span class="footer__line">An open survey of the world's broadband.</span>
+  </div>
+  <div class="footer__row footer__row--mute">
+    <span>Built on Netlify. Data stored in Netlify Database.</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+CREATE TABLE "surveys" (
+	"id" serial PRIMARY KEY,
+	"respondent_name" text NOT NULL,
+	"email" text,
+	"location" text NOT NULL,
+	"isp" text NOT NULL,
+	"download_speed" real,
+	"upload_speed" real,
+	"monthly_cost" real,
+	"connection_type" text NOT NULL,
+	"reliability_rating" integer NOT NULL,
+	"speed_rating" integer NOT NULL,
+	"value_rating" integer NOT NULL,
+	"support_rating" integer NOT NULL,
+	"would_recommend" boolean DEFAULT false NOT NULL,
+	"primary_use" text,
+	"pain_points" text,
+	"suggestions" text,
+	"created_at" timestamp DEFAULT now() NOT NULL
+);
